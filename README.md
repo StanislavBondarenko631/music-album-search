@@ -10,7 +10,7 @@ A modern, responsive, and type-safe Music Album Search Application built with **
 ![TypeScript](https://img.shields.io/badge/typescript-%233178C6.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![Axios](https://img.shields.io/badge/axios-%233178C6.svg?style=for-the-badge&logo=axios&logoColor=white)
-![Formik]
+![Formik](https://img.shields.io/badge/formik-FF5447?style=for-the-badge&logo=formik&logoColor=white)
 
 - **State Management / Data Fetching:** TanStack Query (`@tanstack/react-query`)
 - **Notifications:** `react-hot-toast`
