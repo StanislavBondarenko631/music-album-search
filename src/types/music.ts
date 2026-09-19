@@ -1,12 +1,15 @@
-export interface AlbumImage {
-  "#text": string;
-  size: "small" | "medium" | "large" | "extralarge";
+export interface Album {
+  id: number;
+  title: string;
+  cover_image: string;
+  year?: string;
 }
 
-export interface Album {
-  name: string;
-  artist: string;
-  url: string;
-  image: AlbumImage[];
-  mbid?: string;
+export interface AlbumDetails {
+  id: number;
+  title: string;
+  artists_sort: string;
+  notes?: string;
+  genres?: string[];
+  styles?: string[];
 }

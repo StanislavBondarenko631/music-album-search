@@ -1,37 +1,44 @@
 import axios from "axios";
-import type { Album } from "../types/music";
+import type { Album, AlbumDetails } from "../types/music";
 
-const LASTFM_API_KEY = import.meta.env.VITE_LASTFM_API_KEY;
+const DISCOGS_TOKEN = import.meta.env.VITE_DISCOGS_TOKEN;
 
-interface LastFMResponse {
-  results: {
-    "opensearch:totalResults": string;
-    "opensearch:startIndex": string;
-    "opensearch:itemsPerPage": string;
-    albummatches: {
-      album: Album[];
-    };
-  };
+interface DiscogsSearchResponse {
+  results: Album[];
 }
 
 const musicInstance = axios.create({
-  baseURL: "https://ws.audioscrobbler.com/2.0/",
+  baseURL: "https://api.discogs.com",
+  headers: {
+    "User-Agent": "MyMusicSearchApp/1.0",
+    Authorization: `Discogs token=${DISCOGS_TOKEN}`,
+  },
 });
 
-export const fetchAlbum = async (
+export const fetchAlbums = async (
   query: string,
   page: number = 1,
-): Promise<LastFMResponse> => {
-  const response = await musicInstance.get<LastFMResponse>("", {
-    params: {
-      method: "album.search",
-      album: query,
-      api_key: LASTFM_API_KEY,
-      page: page,
-      limit: 20,
-      format: "json",
+): Promise<DiscogsSearchResponse> => {
+  const response = await musicInstance.get<DiscogsSearchResponse>(
+    "/database/search",
+    {
+      params: {
+        q: query,
+        type: "release",
+        per_page: 15,
+        page: page,
+      },
     },
-  });
+  );
 
+  return response.data;
+};
+
+export const fetchAlbumDetails = async (
+  releaseId: number,
+): Promise<AlbumDetails> => {
+  const response = await musicInstance.get<AlbumDetails>(
+    `/releases/${releaseId}`,
+  );
   return response.data;
 };
