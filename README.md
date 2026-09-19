@@ -1,75 +1,64 @@
-# React + TypeScript + Vite
+# 🎵 Album-Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive, and type-safe Music Album Search Application built with **React**, **TypeScript**, and **Vite**. The application integrates directly with the **Discogs API** to provide comprehensive music discographies, release details, and server-side pagination with clean error handling.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tech Stack & Libraries
 
-## React Compiler
+![React](https://img.shields.io/badge/react-%2361DAFB.svg?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/typescript-%233178C6.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![Axios](https://img.shields.io/badge/axios-%233178C6.svg?style=for-the-badge&logo=axios&logoColor=white)
+![Formik]
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **State Management / Data Fetching:** TanStack Query (`@tanstack/react-query`)
+- **Notifications:** `react-hot-toast`
+- **Pagination:** `react-paginate`
+- **Styling:** CSS Modules (Light Theme)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Key Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 🔍 **Smart Live Search:** Search thousands of artists and albums seamlessly using the comprehensive Discogs database.
+- 📄 **Server-Side Pagination:** Efficient data loading with a clean navigation block placed perfectly above the grid.
+- 🔄 **"Album-Search" Reset:** Interactive branding logo that instantly wipes all inputs, queries, and server states, resetting the app to its hero view.
+- 📦 **Dynamic Modal Popups:** Responsive layout modal overlays featuring inner description auto-scrolling and key focus controls (`Escape` key & overlay click close).
+- 🎨 **Modern Light Theme:** Polished minimal aesthetic with lightweight CSS spinner loading indicators.
+- 🚨 **Toast Notifications:** Flash user alerts via `react-hot-toast` for handling invalid or empty search criteria.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 💻 Local Setup & Installation
 
-```
+Follow these steps to run the project locally on your machine:
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Clone the repository:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   git clone https://github.com
+   cd music-album-search
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. **Install all dependencies:**
 
-```
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables:**
+   Create a `.env` file in the root directory and append your Discogs Developer Token:
+
+   ```env
+   VITE_DISCOGS_TOKEN=your_personal_access_token_here
+   ```
+
+4. **Launch the Development Server:**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in Browser:**
+   Navigate to `http://localhost:5173` to explore the application!
